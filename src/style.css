@@ -1,0 +1,252 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+:root {
+  /* === Grayscale - Dark Mode Base === */
+  --color-bg: #121212;
+  --color-sidebar: #1f1f1f;
+  --color-card: #1a1a1a;
+  --color-border: #2e2e2e;
+  --color-text: #e5e5e5;
+  --color-text-secondary: #a1a1aa;
+  --color-text-placeholder: #6b7280;
+  --color-hover: #262626;
+  /* === Priority Colors === */
+  --color-priority-high: #ef4444; /* Vermelho */
+  --color-priority-medium: #facc15; /* Amarelo */
+  --color-priority-low: #1eb054; /* Verde */
+  /* === Accent / Estado === */
+  --color-accent-blue: #8db6f9;
+  --color-accent-blue-transparent: #3b83f64f;
+
+  --color-accent-purple: #8b5cf6;
+  --color-success: #10b981;
+}
+
+.container {
+  height: 100vh;
+
+  display: flex;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.sidebar {
+  background-color: var(--color-sidebar);
+  padding: 20px 8px 0 15px;
+
+  flex: 0.5;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  color: var(--color-text);
+
+  font-family: "Noto Sans";
+  font-weight: 300;
+}
+
+.up-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.up-menu .logo {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "rubik";
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.sidebar-opt #newTask {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding-left: 0;
+}
+
+.fadePlus i {
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.fadePlus:hover i {
+  opacity: 1;
+}
+
+.optTask {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  text-align: center;
+}
+
+.optTask i {
+  color: var(--color-text);
+  opacity: 0.6;
+}
+
+.sidebar-projects li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: start;
+  gap: 10px;
+}
+
+.sidebar-projects p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.sidebar-projects p i,
+.sidebar-opt #newTask i {
+  padding-right: 5px;
+}
+
+.fadePlus i:hover {
+  color: var(--color-text-secondary);
+}
+
+i {
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+.menu-container li:hover,
+p:hover {
+  border-radius: 5px;
+  background-color: var(--color-hover);
+}
+
+.menu-container p {
+  margin-top: 25px;
+}
+
+.selected,
+.selected i {
+  background-color: var(--color-accent-blue-transparent);
+  color: var(--color-accent-blue);
+}
+
+.menu-container li {
+  padding: 5px;
+  border-radius: 5px;
+}
+.notes-container {
+  background-color: var(--color-bg);
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-containers {
+  margin-top: 70px;
+
+  width: 60%;
+
+  color: var(--color-text);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-family: "Noto Sans";
+  font-size: 15px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 10px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.desc {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.endDate {
+  font-size: 10px;
+  font-weight: 200;
+  margin-top: 5px;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+
+  margin-top: 10px;
+
+  background-color: var(--color-border);
+}
+
+.checkbox-container {
+  position: relative;
+}
+
+.checkbox-container input[type="checkbox"] {
+  display: none;
+}
+
+/* Style the custom checkbox */
+.checkbox-container label {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect */
+.checkbox-container label:hover {
+  background-color: var(--color-text-placeholder);
+}
+
+/* Checked state */
+.checkbox-container input[type="checkbox"]:checked + label {
+  background-color: var(--color-success);
+}

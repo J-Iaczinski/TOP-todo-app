@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script
+      src="https://kit.fontawesome.com/a2b162a2d4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="up-menu">
+          <li class="pointer logo">To-Do</li>
+          <div class="icons">
+            <li><i class="fa-solid fa-bell"></i></li>
+            <li><i class="fa-solid fa-expand"></i></li>
+          </div>
+        </div>
+        <div class="menu-container">
+          <div class="sidebar-opt small pointer">
+            <ul>
+              <li id="newTask" class="fadePlus">
+                Nova Tarefa <i class="fa-solid fa-plus"></i>
+              </li>
+              <li class="optTask selected">
+                <i class="fa-solid fa-house-chimney"></i> Todas
+              </li>
+              <li class="optTask">
+                <i class="fa-solid fa-calendar-day fa-lg"></i> Hoje
+              </li>
+              <li class="optTask">
+                <i class="fa-solid fa-calendar-week fa-lg"></i> Em Breve
+              </li>
+              <li class="optTask">
+                <i class="fa-solid fa-square-check fa-lg"></i> Concluídas
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-projects small pointer">
+            <p class="fadePlus sidebar-text projects-text">
+              Meus Projetos <i class="fa-solid fa-plus"></i>
+            </p>
+            <ul>
+              <li><i class="fa-solid fa-sm fa-hashtag"></i>Projeto 1</li>
+              <li><i class="fa-solid fa-sm fa-hashtag"></i>Projeto 2</li>
+              <li><i class="fa-solid fa-sm fa-hashtag"></i>Projeto 3</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="notes-container">
+        <div class="card-containers">
+          <div class="card-title">Todas</div>
+          <div class="card">
+            <div class="radioBtn">
+              <div class="checkbox-container">
+                <input type="checkbox" id="check1" />
+                <label for="check1"></label>
+              </div>
+            </div>
+            <div class="card-main">
+              <div class="title">Lorem ipsum dolor.</div>
+              <div class="desc">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
+                itaque voluptatibus quo veritatis voluptate eligendi.
+              </div>
+              <div class="endDate">Today</div>
+              <div class="divider"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="radioBtn">
+              <div class="checkbox-container">
+                <input type="checkbox" id="check2" />
+                <label for="check2"></label>
+              </div>
+            </div>
+            <div class="card-main">
+              <div class="title">Lorem ipsum dolor.</div>
+              <div class="desc">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum
+                itaque voluptatibus quo veritatis voluptate eligendi.
+              </div>
+              <div class="endDate">Today</div>
+              <div class="divider"></div>
+            </div>
+          </div>
+          <div class="newCard">
+            <li><i class="fa-solid fa-plus"></i> Nova Tarefa</li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
