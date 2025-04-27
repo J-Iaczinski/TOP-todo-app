@@ -3,8 +3,6 @@ import { closeModal, createModal, openModal } from "./dialog.js";
 import { displayNote } from "./noteCreator.js";
 export { projects };
 
-// Notes Array
-
 // Projects Array
 const projects = ["project1", "project2"];
 
@@ -17,6 +15,15 @@ function modalHandler() {
     openModal(); // Only open modal, event listeners are already inside createModal()
     closeModal();
   });
+
+  const newCard = document.querySelector(".newCard");
+
+  newCard.addEventListener("click", () => {
+    createModal();
+    openModal(); // Only open modal, event listeners are already inside createModal()
+    closeModal();
+  });
 }
+
 displayNote();
 modalHandler();

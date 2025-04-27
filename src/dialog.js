@@ -28,8 +28,8 @@ function createModal() {
 
   const textDescription = document.createElement("textarea");
   textDescription.setAttribute("name", "description");
-  textDescription.setAttribute("rows", "4");
-  textDescription.setAttribute("cols", "30");
+  textDescription.setAttribute("rows", "6");
+  textDescription.setAttribute("cols", "60");
   textDescription.setAttribute("placeholder", "Descrição");
 
   const inputData = document.createElement("input");
@@ -90,8 +90,8 @@ function createModal() {
 }
 
 function openModal() {
+  createModal();
   const modal = document.querySelector("dialog");
-  const form = document.querySelector(".formdialog");
 
   modal.showModal();
 }

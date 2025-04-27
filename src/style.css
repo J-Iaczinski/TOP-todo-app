@@ -220,7 +220,7 @@ p:hover {
   height: 1px;
   width: 100%;
 
-  margin-top: 10px;
+  margin-top: 7px;
 
   background-color: var(--color-border);
 }
@@ -329,7 +329,7 @@ label {
   border-radius: 8px;
 
   padding: 5px;
-  width: 80px;
+  width: max-content;
 
   cursor: pointer;
 }
@@ -368,4 +368,47 @@ label {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.newCard {
+  cursor: pointer;
+  opacity: 0.3;
+  transition: 0.25s ease;
+}
+
+.newCard:hover {
+  opacity: 0.7;
+}
+
+.editcard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.card-main {
+  width: 100%;
+}
+
+.editcard i {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.card-main:hover i {
+  opacity: 0.3;
+}
+
+.card-main i:hover {
+  opacity: 0.5;
+}
+
+.notebtn {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
