@@ -13,9 +13,6 @@ function saveNote(note) {
   // Save using the correct key
   localStorage.setItem("noteLibrary", JSON.stringify(noteLibrary));
 
-  // Retrieve using the same key
-  let newObj = localStorage.getItem("noteLibrary");
-
   // display new note (with the old ones)
   displayNote();
 }

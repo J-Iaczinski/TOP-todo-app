@@ -7,6 +7,9 @@ function createModal() {
   if (existingModal) {
     existingModal.remove();
   }
+}
+
+function newCardModal() {
   const modalDiv = document.createElement("dialog");
   modalDiv.classList = "modal";
 
@@ -61,10 +64,12 @@ function createModal() {
   buttonDiv.appendChild(cancelBtn);
   buttonDiv.appendChild(confirmBtn);
 
-  projects.forEach((project) => {
+  const projectList = JSON.parse(localStorage.getItem("projectLibrary"));
+
+  projectList.forEach((item) => {
     const option = document.createElement("option");
-    option.value = project;
-    option.textContent = project;
+    option.value = item.project; // Usa o item individual
+    option.textContent = item.project; // Usa o item individual
     select.appendChild(option);
   });
 
@@ -91,6 +96,8 @@ function createModal() {
 
 function openModal() {
   createModal();
+  newCardModal();
+
   const modal = document.querySelector("dialog");
 
   modal.showModal();
