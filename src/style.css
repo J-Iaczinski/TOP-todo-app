@@ -412,3 +412,23 @@ label {
   flex-direction: row;
   gap: 10px;
 }
+
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title i {
+  opacity: 0.3;
+  transition: ease 0.25s;
+  cursor: pointer;
+}
+
+.card-title:hover i {
+  opacity: 0.3;
+}
+
+.card-title i:hover {
+  opacity: 0.5;
+}

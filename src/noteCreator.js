@@ -18,6 +18,7 @@ function saveNote(note) {
 }
 
 function displayNote() {
+  const currentProject = localStorage.getItem("currentProject");
   const noteStored = localStorage.getItem("noteLibrary");
   const cardCont = document.querySelector(".card-containers");
   const newCard = document.querySelector(".newCard");
@@ -30,85 +31,169 @@ function displayNote() {
     cardCont.insertBefore(cardWrapper, newCard);
   }
 
-  // ✅ Clear all existing cards inside the wrapper BEFORE adding new ones
   cardWrapper.innerHTML = "";
 
   if (noteStored) {
-    let noteArray = JSON.parse(noteStored);
+    if (currentProject == "all") {
+      let noteArray = JSON.parse(noteStored);
 
-    noteArray.forEach((note, index) => {
-      const cardDiv = document.createElement("div");
-      cardDiv.className = `card check-${index}`;
+      noteArray.forEach((note, index) => {
+        const cardDiv = document.createElement("div");
+        cardDiv.className = `card check-${index}`;
 
-      // Radio Button Divs
-      const radioDiv = document.createElement("div");
-      radioDiv.classList.add("radioBtn");
+        // Radio Button Divs
+        const radioDiv = document.createElement("div");
+        radioDiv.classList.add("radioBtn");
 
-      const checkboxContainer = document.createElement("div");
-      checkboxContainer.classList.add("checkbox-container");
+        const checkboxContainer = document.createElement("div");
+        checkboxContainer.classList.add("checkbox-container");
 
-      const inputCheck = document.createElement("input");
-      inputCheck.id = `check-${index}`;
-      inputCheck.type = "checkbox";
+        const inputCheck = document.createElement("input");
+        inputCheck.id = `check-${index}`;
+        inputCheck.type = "checkbox";
 
-      const labelCheck = document.createElement("label");
-      labelCheck.setAttribute("for", `check-${index}`);
+        const labelCheck = document.createElement("label");
+        labelCheck.setAttribute("for", `check-${index}`);
+        labelCheck.addEventListener("mousedown", (e) => {
+          deleteNote(e.target);
+        });
 
-      checkboxContainer.append(inputCheck, labelCheck);
-      radioDiv.appendChild(checkboxContainer);
-      cardDiv.appendChild(radioDiv);
+        checkboxContainer.append(inputCheck, labelCheck);
+        radioDiv.appendChild(checkboxContainer);
+        cardDiv.appendChild(radioDiv);
 
-      // Main Contents of The Note
-      const cardMain = document.createElement("div");
-      cardMain.classList.add("card-main");
+        // Main Contents of The Note
+        const cardMain = document.createElement("div");
+        cardMain.classList.add("card-main");
 
-      const editCard = document.createElement("div");
-      editCard.classList = "editcard";
+        const editCard = document.createElement("div");
+        editCard.classList = "editcard";
 
-      const editbtn = document.createElement("i");
-      editbtn.className = "fas fa-edit fa-sm";
-      editbtn.id = `check-${index}`;
+        const editbtn = document.createElement("i");
+        editbtn.className = "fas fa-edit fa-sm";
+        editbtn.id = `check-${index}`;
 
-      // ✅ Avoid duplicate event listeners
-      editbtn.addEventListener("click", (e) => {
-        editNote(e.target);
+        // ✅ Avoid duplicate event listeners
+        editbtn.addEventListener("click", (e) => {
+          editNote(e.target);
+        });
+
+        const trash = document.createElement("i");
+        trash.className = "fas fa-trash fa-sm";
+        trash.id = `check-${index}`;
+
+        const noteBtns = document.createElement("div");
+        noteBtns.className = "notebtn";
+        noteBtns.appendChild(editbtn);
+        noteBtns.appendChild(trash);
+
+        trash.addEventListener("click", (e) => {
+          deleteNote(e.target);
+        });
+        const title = document.createElement("div");
+        title.classList.add("title");
+        title.textContent = note.title;
+
+        editCard.appendChild(title);
+        editCard.appendChild(noteBtns);
+
+        const desc = document.createElement("div");
+        desc.classList.add("desc");
+        desc.textContent = note.description;
+
+        const dueDate = document.createElement("div");
+        dueDate.classList.add("endDate");
+        dueDate.textContent = note.dueDate;
+
+        const divider = document.createElement("div");
+        divider.classList.add("divider");
+
+        cardMain.append(editCard, desc, dueDate);
+        cardDiv.appendChild(cardMain);
+        cardWrapper.appendChild(cardDiv);
+        cardWrapper.appendChild(divider);
       });
+    } else {
+      let noteArray = JSON.parse(noteStored);
 
-      const trash = document.createElement("i");
-      trash.className = "fas fa-trash fa-sm";
-      trash.id = `check-${index}`;
+      noteArray.forEach((note, index) => {
+        if (note.project == currentProject) {
+          const cardDiv = document.createElement("div");
+          cardDiv.className = `card check-${index}`;
 
-      const noteBtns = document.createElement("div");
-      noteBtns.className = "notebtn";
-      noteBtns.appendChild(editbtn);
-      noteBtns.appendChild(trash);
+          // Radio Button Divs
+          const radioDiv = document.createElement("div");
+          radioDiv.classList.add("radioBtn");
 
-      trash.addEventListener("click", (e) => {
-        deleteNote(e.target);
+          const checkboxContainer = document.createElement("div");
+          checkboxContainer.classList.add("checkbox-container");
+
+          const inputCheck = document.createElement("input");
+          inputCheck.id = `check-${index}`;
+          inputCheck.type = "checkbox";
+
+          const labelCheck = document.createElement("label");
+          labelCheck.setAttribute("for", `check-${index}`);
+          labelCheck.addEventListener("mousedown", (e) => {
+            deleteNote(e.target);
+          });
+          checkboxContainer.append(inputCheck, labelCheck);
+          radioDiv.appendChild(checkboxContainer);
+          cardDiv.appendChild(radioDiv);
+
+          // Main Contents of The Note
+          const cardMain = document.createElement("div");
+          cardMain.classList.add("card-main");
+
+          const editCard = document.createElement("div");
+          editCard.classList = "editcard";
+
+          const editbtn = document.createElement("i");
+          editbtn.className = "fas fa-edit fa-sm";
+          editbtn.id = `check-${index}`;
+
+          // ✅ Avoid duplicate event listeners
+          editbtn.addEventListener("click", (e) => {
+            editNote(e.target);
+          });
+
+          const trash = document.createElement("i");
+          trash.className = "fas fa-trash fa-sm";
+          trash.id = `check-${index}`;
+
+          const noteBtns = document.createElement("div");
+          noteBtns.className = "notebtn";
+          noteBtns.appendChild(editbtn);
+          noteBtns.appendChild(trash);
+
+          trash.addEventListener("click", (e) => {
+            deleteNote(e.target);
+          });
+          const title = document.createElement("div");
+          title.classList.add("title");
+          title.textContent = note.title;
+
+          editCard.appendChild(title);
+          editCard.appendChild(noteBtns);
+
+          const desc = document.createElement("div");
+          desc.classList.add("desc");
+          desc.textContent = note.description;
+
+          const dueDate = document.createElement("div");
+          dueDate.classList.add("endDate");
+          dueDate.textContent = note.dueDate;
+
+          const divider = document.createElement("div");
+          divider.classList.add("divider");
+
+          cardMain.append(editCard, desc, dueDate);
+          cardDiv.appendChild(cardMain);
+          cardWrapper.appendChild(cardDiv);
+          cardWrapper.appendChild(divider);
+        }
       });
-      const title = document.createElement("div");
-      title.classList.add("title");
-      title.textContent = note.title;
-
-      editCard.appendChild(title);
-      editCard.appendChild(noteBtns);
-
-      const desc = document.createElement("div");
-      desc.classList.add("desc");
-      desc.textContent = note.description;
-
-      const dueDate = document.createElement("div");
-      dueDate.classList.add("endDate");
-      dueDate.textContent = note.dueDate;
-
-      const divider = document.createElement("div");
-      divider.classList.add("divider");
-
-      cardMain.append(editCard, desc, dueDate);
-      cardDiv.appendChild(cardMain);
-      cardWrapper.appendChild(cardDiv);
-      cardWrapper.appendChild(divider);
-    });
+    }
   }
 }
 

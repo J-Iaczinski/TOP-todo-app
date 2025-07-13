@@ -66,12 +66,21 @@ function newCardModal() {
 
   const projectList = JSON.parse(localStorage.getItem("projectLibrary"));
 
-  projectList.forEach((item) => {
+  const currentProject = localStorage.getItem("currentProject");
+
+  if (currentProject == "all") {
+    projectList.forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item.project; // Usa o item individual
+      option.textContent = item.project; // Usa o item individual
+      select.appendChild(option);
+    });
+  } else {
     const option = document.createElement("option");
-    option.value = item.project; // Usa o item individual
-    option.textContent = item.project; // Usa o item individual
+    option.value = currentProject; // Usa o item individual
+    option.textContent = currentProject; // Usa o item individual
     select.appendChild(option);
-  });
+  }
 
   // Montar estrutura do formulário
   form.appendChild(inputTitle);
