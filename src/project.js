@@ -1,7 +1,7 @@
-import { displayNote } from "./noteCreator";
 import { displayTodas } from "./index";
+import { displayNote } from "./noteCreator";
 // Project Handler
-export { projectCreator, displayProjects, saveProject };
+export { displayProjects, projectCreator, saveProject };
 
 function projectCreator(project) {
   return { project, status: "open" };
@@ -80,15 +80,15 @@ function displayProjectNotes(target) {
 }
 
 function deleteProject(target) {
-  const projectLibrary = JSON.parse(localStorage.getItem("projectLibrary"));
-  const noteLibrary = JSON.parse(localStorage.getItem("noteLibrary"));
+  const projectLibrary =
+    JSON.parse(localStorage.getItem("projectLibrary")) || [];
+  const noteLibrary = JSON.parse(localStorage.getItem("noteLibrary")) || [];
 
   const updateNotes = noteLibrary.filter(
     (notes) => notes.project !== target.id
   );
 
   localStorage.setItem("noteLibrary", JSON.stringify(updateNotes));
-
   displayNote();
 
   const updateLibrary = projectLibrary.filter(
@@ -97,7 +97,6 @@ function deleteProject(target) {
 
   localStorage.setItem("projectLibrary", JSON.stringify(updateLibrary));
   displayProjects();
-
   displayTodas();
 }
 

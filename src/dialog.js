@@ -1,5 +1,4 @@
-export { createModal, openModal, closeModal, handleForm };
-import { projects } from "./index";
+export { closeModal, createModal, handleForm, openModal };
 import { noteCreator, saveNote } from "./noteCreator";
 
 function createModal() {
@@ -10,8 +9,12 @@ function createModal() {
 }
 
 function newCardModal() {
+  const currentProject = localStorage.getItem("currentProject");
+  console.log(currentProject);
+
   const modalDiv = document.createElement("dialog");
   modalDiv.classList = "modal";
+  console.log(currentProject);
 
   const h2Title = document.createElement("h2");
   h2Title.textContent = "Nova Tarefa";
@@ -66,9 +69,7 @@ function newCardModal() {
 
   const projectList = JSON.parse(localStorage.getItem("projectLibrary"));
 
-  const currentProject = localStorage.getItem("currentProject");
-
-  if (currentProject == "all") {
+  if (currentProject === "all" || !currentProject) {
     projectList.forEach((item) => {
       const option = document.createElement("option");
       option.value = item.project; // Usa o item individual
